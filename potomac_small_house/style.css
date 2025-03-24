@@ -213,8 +213,7 @@ body.single-scene {
 
   border-radius: 5px;
 
-  background-color: rgb(58, 68, 84);
-  background-color: rgba(58, 68, 84, 0.8);
+  background: rgba(58, 68, 84, 0.67);
 
   color: #fff;
 
@@ -676,7 +675,7 @@ body.view-control-buttons .viewControlButton {
 
 /* better styles */
 /* Navigation Menu */
-/* .nav-menu {
+.nav-menu {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -690,10 +689,10 @@ body.view-control-buttons .viewControlButton {
   border-radius: 8px;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-} */
+}
 
 /* given styles from figma */
-.nav-menu {
+/* .nav-menu {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -708,7 +707,7 @@ body.view-control-buttons .viewControlButton {
   background: #D2D2D273;
   backdrop-filter: blur(5.599999904632568px);
   border: 1px solid;
-}
+} */
 
 .nav-item {
   width: 44px;
@@ -731,7 +730,8 @@ body.view-control-buttons .viewControlButton {
   left: 50%;
   transform: translateX(-50%) translateY(-16px);
   padding: 6px 12px;
-  background: #D2D2D273;
+  /* background: #D2D2D273; */
+  background: rgba(58, 68, 84, 0.67);
   color: white;
   font-size: 14px;
   border-radius: 4px;
@@ -743,7 +743,7 @@ body.view-control-buttons .viewControlButton {
   z-index: 1002;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
-  border: 1px solid;
+  /* border: 1px solid; */
 }
 
 /* Tooltip arrow */
@@ -879,7 +879,8 @@ body.view-control-buttons .viewControlButton {
   bottom: 90px;
   /* Final visible position */
   right: 20px;
-  background: #D2D2D273;
+  /* background: #D2D2D273; */
+  background: rgba(58, 68, 84, 0.67);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   padding: 10px 0;
@@ -903,7 +904,8 @@ body.view-control-buttons .viewControlButton {
   bottom: 90px;
   /* Final visible position */
   right: 120px;
-  background: #D2D2D273;
+  /* background: #D2D2D273; */
+  background: rgba(58, 68, 84, 0.67);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   padding: 10px 0;
@@ -937,7 +939,7 @@ body.view-control-buttons .viewControlButton {
   padding: 12px 20px;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #333;
+  color: #fff;
   display: flex;
   align-items: center;
   white-space: nowrap;
@@ -957,7 +959,7 @@ body.view-control-buttons .viewControlButton {
 .room-item.active,
 .floor-item.active {
   background: rgba(0, 0, 0, 0.1);
-  color: #000;
+  color: #fff;
   font-weight: 500;
 }
 

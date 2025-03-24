@@ -1002,7 +1002,7 @@ var APP_DATA = {
     },
     {
       "id": "20-hallway-01---2f",
-      "name": "Hallway 01 - 2F",
+      "name": "Hallway 01",
       "levels": [
         {
           "tileSize": 256,

@@ -15,7 +15,7 @@
  */
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
   var screenfull = window.screenfull;
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
-    var setMode = function() {
+    var setMode = function () {
       if (mql.matches) {
         document.body.classList.remove('desktop');
         document.body.classList.add('mobile');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Detect whether we are on a touch device.
   document.body.classList.add('no-touch');
-  window.addEventListener('touchstart', function() {
+  window.addEventListener('touchstart', function () {
     document.body.classList.remove('no-touch');
     document.body.classList.add('touch');
   });
@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
 
   // Create scenes.
-  var scenes = data.scenes.map(function(data) {
+  var scenes = data.scenes.map(function (data) {
     var urlPrefix = "tiles";
     var source = Marzipano.ImageUrlSource.fromString(
       urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
       { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
     var geometry = new Marzipano.CubeGeometry(data.levels);
 
-    var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100*Math.PI/180, 120*Math.PI/180);
+    var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
     var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
 
     var scene = viewer.createScene({
@@ -92,13 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Create link hotspots.
-    data.linkHotspots.forEach(function(hotspot) {
+    data.linkHotspots.forEach(function (hotspot) {
       var element = createLinkHotspotElement(hotspot);
       scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
     });
 
     // Create info hotspots.
-    data.infoHotspots.forEach(function(hotspot) {
+    data.infoHotspots.forEach(function (hotspot) {
       var element = createInfoHotspotElement(hotspot);
       scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
     });
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var autorotate = Marzipano.autorotate({
     yawSpeed: 0.03,
     targetPitch: 0,
-    targetFov: Math.PI/2
+    targetFov: Math.PI / 2
   });
   if (data.settings.autorotateEnabled) {
     autorotateToggleElement.classList.add('enabled');
@@ -126,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set up fullscreen mode, if supported.
   if (screenfull.enabled && data.settings.fullscreenButton) {
     document.body.classList.add('fullscreen-enabled');
-    fullscreenToggleElement.addEventListener('click', function() {
+    fullscreenToggleElement.addEventListener('click', function () {
       screenfull.toggle();
     });
-    screenfull.on('change', function() {
+    screenfull.on('change', function () {
       if (screenfull.isFullscreen) {
         fullscreenToggleElement.classList.add('enabled');
       } else {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Sort scenes into floors
     var floors = {};
-    scenes.forEach(function(scene) {
+    scenes.forEach(function (scene) {
       var floorMatch = scene.data.name.match(/(\d+)F$/);
       var floor = floorMatch ? floorMatch[1] : '1';
       if (!floors[floor]) {
@@ -162,44 +162,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Create room items (initially hidden)
-    scenes.forEach(function(scene) {
+    scenes.forEach(function (scene) {
       var div = document.createElement('div');
       div.className = 'room-item';
-      
+
       // Remove floor suffix for display
       div.textContent = scene.data.name.replace(/[-]?\d+F$/, '');
-      
+
       // Safely extract floor number with a fallback to '1'
       var floorMatch = scene.data.name.match(/(\d+)F$/);
       var floorNumber = floorMatch ? floorMatch[1] : '1';
       div.setAttribute('data-floor', floorNumber);
-      
+
       div.style.display = 'none'; // Hide initially
-      div.addEventListener('click', function() {
-          switchScene(scene);
+      div.addEventListener('click', function () {
+        switchScene(scene, true);
         hideAllLists();
       });
       roomsContainer.appendChild(div);
     });
 
     // Create floor items
-    Object.keys(floors).sort().forEach(function(floor) {
+    Object.keys(floors).sort().forEach(function (floor) {
       var div = document.createElement('div');
       div.className = 'floor-item';
       div.textContent = floor + 'F';
-      div.addEventListener('click', function() {
+      div.addEventListener('click', function () {
         // Hide all rooms first
-        document.querySelectorAll('.room-item').forEach(function(item) {
+        document.querySelectorAll('.room-item').forEach(function (item) {
           item.style.display = 'none';
         });
         // Show only rooms for this floor
-        document.querySelectorAll('.room-item[data-floor="' + floor + '"]').forEach(function(item) {
+        document.querySelectorAll('.room-item[data-floor="' + floor + '"]').forEach(function (item) {
           item.style.display = 'flex';
         });
         showRoomsList();
-        
+
         // Update active state for floors
-        document.querySelectorAll('.floor-item').forEach(function(item) {
+        document.querySelectorAll('.floor-item').forEach(function (item) {
           item.classList.remove('active');
         });
         div.classList.add('active');
@@ -210,12 +210,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show rooms for the initial floor
     var initialFloorMatch = scenes[0].data.name.match(/(\d+)F$/);
     var initialFloor = initialFloorMatch ? initialFloorMatch[1] : '1';
-    document.querySelectorAll('.room-item[data-floor="' + initialFloor + '"]').forEach(function(item) {
+    document.querySelectorAll('.room-item[data-floor="' + initialFloor + '"]').forEach(function (item) {
       item.style.display = 'flex';
     });
 
     // Toggle handlers
-    roomsToggle.addEventListener('click', function() {
+    roomsToggle.addEventListener('click', function () {
       if (roomsList.classList.contains('visible')) {
         hideAllLists();
       } else {
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    floorsToggle.addEventListener('click', function() {
+    floorsToggle.addEventListener('click', function () {
       if (floorsList.classList.contains('visible')) {
         hideAllLists();
       } else {
@@ -245,11 +245,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function hideAllLists() {
-    [roomsList, floorsList].forEach(function(list) {
+    [roomsList, floorsList].forEach(function (list) {
       if (list.classList.contains('visible')) {
         list.classList.remove('visible');
         // Wait for the transition to complete before hiding
-        setTimeout(function() {
+        setTimeout(function () {
           list.classList.add('hidden');
         }, 300); // Match this with your CSS transition time
       }
@@ -258,21 +258,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Update active states
   function updateActiveStates(scene) {
-    document.querySelectorAll('.room-item').forEach(function(item) {
+    document.querySelectorAll('.room-item').forEach(function (item) {
       item.classList.toggle('active', item.textContent === scene.data.name);
     });
-    
+
     var floorMatch = scene.data.name.match(/(\d+)F$/);
     var floor = floorMatch ? floorMatch[1] + 'F' : '1F';
-    document.querySelectorAll('.floor-item').forEach(function(item) {
+    document.querySelectorAll('.floor-item').forEach(function (item) {
       item.classList.toggle('active', item.textContent === floor);
     });
   }
 
   // Update the switchScene function to include active state updates
-  function switchScene(scene) {
+  function switchScene(scene,preserveView = false) {
     stopAutorotate();
-    scene.view.setParameters(scene.data.initialViewParameters);
+    // scene.view.setParameters(scene.data.initialViewParameters);
+    if (preserveView) {
+      // Get current view parameters
+      var currentViewParams = viewer.view().parameters();
+      
+      scene.view.setParameters(currentViewParams);
+  } else {
+      // Use default view parameters
+      scene.view.setParameters(scene.data.initialViewParameters);
+  }
     scene.scene.switchTo();
     startAutorotate();
     updateSceneName(scene);
@@ -321,23 +330,23 @@ document.addEventListener('DOMContentLoaded', function() {
     icon.style.opacity = '0.4'; // Set initial opacity for inactive stated
 
     // Set rotation transform.
-    var transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
+    var transformProperties = ['-ms-transform', '-webkit-transform', 'transform'];
     for (var i = 0; i < transformProperties.length; i++) {
-        var property = transformProperties[i];
-        icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
+      var property = transformProperties[i];
+      icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
     }
 
     // Add mouse enter and leave event handlers to change opacity
-    wrapper.addEventListener('mouseenter', function() {
-        icon.style.opacity = '1'; // Increase opacity when mouse is active
+    wrapper.addEventListener('mouseenter', function () {
+      icon.style.opacity = '1'; // Increase opacity when mouse is active
     });
-    wrapper.addEventListener('mouseleave', function() {
-        icon.style.opacity = '0.5'; // Decrease opacity when mouse is inactive
+    wrapper.addEventListener('mouseleave', function () {
+      icon.style.opacity = '0.5'; // Decrease opacity when mouse is inactive
     });
 
     // Add click event handler.
-    wrapper.addEventListener('click', function() {
-        switchScene(findSceneById(hotspot.target));
+    wrapper.addEventListener('click', function () {
+      switchScene(findSceneById(hotspot.target), true);
     });
 
     // Prevent touch and scroll events from reaching the parent element.
@@ -411,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.classList.add('info-hotspot-modal');
     document.body.appendChild(modal);
 
-    var toggle = function() {
+    var toggle = function () {
       wrapper.classList.toggle('visible');
       modal.classList.toggle('visible');
     };
@@ -431,10 +440,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Prevent touch and scroll events from reaching the parent element.
   function stopTouchAndScrollEventPropagation(element, eventList) {
-    var eventList = [ 'touchstart', 'touchmove', 'touchend', 'touchcancel',
-                      'wheel', 'mousewheel' ];
+    var eventList = ['touchstart', 'touchmove', 'touchend', 'touchcancel',
+      'wheel', 'mousewheel'];
     for (var i = 0; i < eventList.length; i++) {
-      element.addEventListener(eventList[i], function(event) {
+      element.addEventListener(eventList[i], function (event) {
         event.stopPropagation();
       });
     }
