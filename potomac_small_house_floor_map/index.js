@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var tooltip = document.createElement('div');
     tooltip.classList.add('hotspot-tooltip');
     tooltip.classList.add('link-hotspot-tooltip');
-    tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+    tooltip.innerHTML = findSceneDataById(hotspot.target).name.split("-")[0];
 
     wrapper.appendChild(icon);
     wrapper.appendChild(tooltip);
