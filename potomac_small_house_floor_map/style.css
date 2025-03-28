@@ -691,6 +691,7 @@ body.view-control-buttons .viewControlButton {
   -webkit-backdrop-filter: blur(10px);
   padding: 8px 24px;
   border-radius: 8px;
+  border: 2px solid;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -887,6 +888,7 @@ body.view-control-buttons .viewControlButton {
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
+  border: 2px solid;
   padding: 10px 0;
   min-width: 200px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -911,6 +913,7 @@ body.view-control-buttons .viewControlButton {
   /* background: #D2D2D273; */
   background: var(--panel-color);
   backdrop-filter: blur(10px);
+  border: 2px solid;
   border-radius: 8px;
   padding: 10px 0;
   min-width: 200px;
