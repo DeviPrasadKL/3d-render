@@ -177,21 +177,10 @@ document.addEventListener('DOMContentLoaded', function () {
   autorotateToggleElement.addEventListener('click', toggleAutorotate);
 
   // Set up fullscreen mode, if supported.
-  if (screenfull.enabled && data.settings.fullscreenButton) {
-    document.body.classList.add('fullscreen-enabled');
-    fullscreenToggleElement.addEventListener('click', function () {
-      screenfull.toggle();
-    });
-    screenfull.on('change', function () {
-      if (screenfull.isFullscreen) {
-        fullscreenToggleElement.classList.add('enabled');
-      } else {
-        fullscreenToggleElement.classList.remove('enabled');
-      }
-    });
-  } else {
-    document.body.classList.add('fullscreen-disabled');
-  }
+  fullscreenToggleElement.addEventListener('click', function () {
+    screenfull.toggle();
+  });
+
 
   // Set handler for scene switch.
   if (scenes.length > 0) {
@@ -220,19 +209,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (scene.data.name.includes('- M -') || scene.data.name.includes('- ME -')) {
         var div = document.createElement('div');
         div.className = 'room-item';
+        var span = document.createElement('span');
+        span.className = 'text-span';
 
         // Remove floor suffix and type indicators for display
         var displayName = scene.data.name
           .replace(/[-]?\d+F$/, '') // Remove floor suffix
           .replace(/\s*-\s*[ME]+\s*-/, '') // Remove type indicators
           .trim();
-        div.textContent = displayName;
+        span.textContent = displayName;
 
         // Extract floor number
         var floorMatch = scene.data.name.match(/(\d+)F$/);
         var floorNumber = floorMatch ? floorMatch[1] : '1';
         div.setAttribute('data-floor', floorNumber);
 
+        div.appendChild(span); // Add the span to the div
         div.style.display = 'none'; // Hide initially
         div.addEventListener('click', function () {
           switchScene(scene, true);
@@ -246,7 +238,10 @@ document.addEventListener('DOMContentLoaded', function () {
     Object.keys(floors).sort().forEach(function (floor) {
       var div = document.createElement('div');
       div.className = 'floor-item';
-      div.textContent = floor + 'F';
+      var span = document.createElement('span');
+      span.className = 'text-span';
+      span.textContent = floor + 'F';
+      div.appendChild(span); // Add the span to the div
       div.addEventListener('click', function () {
         // Hide all rooms first
         document.querySelectorAll('.room-item').forEach(function (item) {
@@ -351,15 +346,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function switchScene(scene, preserveView = false) {
     stopAutorotate();
     // scene.view.setParameters(scene.data.initialViewParameters);
-    if (preserveView) {
-      // Get current view parameters
-      var currentViewParams = viewer.view().parameters();
+    // if (preserveView) {
+    //   // Get current view parameters
+    //   var currentViewParams = viewer.view().parameters();
 
-      scene.view.setParameters(currentViewParams);
-    } else {
-      // Use default view parameters
-      scene.view.setParameters(scene.data.initialViewParameters);
-    }
+    //   scene.view.setParameters(currentViewParams);
+    // } else {
+    //   // Use default view parameters
+    //   scene.view.setParameters(scene.data.initialViewParameters);
+    // }
     scene.scene.switchTo();
     startAutorotate();
     updateSceneName(scene);

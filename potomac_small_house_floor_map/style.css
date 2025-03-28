@@ -23,13 +23,13 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   background-color: #000;
   color: #fff;
 }
 
-:root{
+:root {
   --panel-color: #b9b9b9b0;
 }
 
@@ -217,7 +217,7 @@ body.single-scene {
 
   border-radius: 5px;
 
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
 
   color: #fff;
 
@@ -736,7 +736,7 @@ body.view-control-buttons .viewControlButton {
   transform: translateX(-50%) translateY(-16px);
   padding: 6px 12px;
   /* background: #D2D2D273; */
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
   color: white;
   font-size: 14px;
   border-radius: 4px;
@@ -975,6 +975,14 @@ body.view-control-buttons .viewControlButton {
   display: none !important;
 }
 
+span.text-span {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0px 0px 5.8px #000000;
+  line-height: 100%;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
 
@@ -1006,6 +1014,9 @@ body.view-control-buttons .viewControlButton {
   transform: translate(-50%, -50%);
   z-index: 1000;
   display: none;
+  backdrop-filter: blur(8.5px);
+  border: 1px solid;
+  border-image-source: linear-gradient(90.15deg, #CCCCCC -0.82%, #FFFFFF 46%, rgba(204, 204, 204, 0.8) 100.21%);
 }
 
 .swiper-slide {
@@ -1030,9 +1041,11 @@ body.view-control-buttons .viewControlButton {
 .swiper-floor {
   text-align: center;
   color: #fff;
-  font-size: 1.7em;
   padding: 30px;
-  font-weight: bold;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1059,7 +1072,8 @@ body.view-control-buttons .viewControlButton {
   .close-swiper {
     padding: 30px !important;
   }
-  #fullscreenToggle{
+
+  #fullscreenToggle {
     display: none;
   }
 }
@@ -1077,23 +1091,9 @@ body.view-control-buttons .viewControlButton {
 
 span#closeSwiper {
   position: absolute;
-  border-radius: 3.31px;
-  border-width: 1.66px;
-  padding-top: 8.28px;
-  padding-right: 27.34px;
-  padding-bottom: 8.28px;
-  background: #C8C8C869;
-  top: 25px;
+  z-index: 10000;
   cursor: pointer;
-  padding-left: 27.34px;
-  right: 20px;
-  border: 1.66px solid;
-  z-index: 1000;
-  font-family: Montserrat, sans-serif;
-  font-weight: 600;
-  font-size: 14.88px;
-  line-height: 100%;
-  box-shadow: 0px 0px 6.13px 0px #000000FA;
+  top: 15px;
 }
 
 .close-swiper {
