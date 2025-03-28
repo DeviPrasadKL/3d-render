@@ -29,6 +29,10 @@ body {
   color: #fff;
 }
 
+:root{
+  --panel-color: #B9B9B9;
+}
+
 a,
 a:hover,
 a:active,
@@ -682,7 +686,7 @@ body.view-control-buttons .viewControlButton {
   display: flex;
   align-items: center;
   gap: 24px;
-  background: rgba(58, 68, 84, 0.8);
+  background: var(--panel-color);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 8px 24px;
@@ -880,7 +884,7 @@ body.view-control-buttons .viewControlButton {
   /* Final visible position */
   right: 20px;
   /* background: #D2D2D273; */
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   padding: 10px 0;
@@ -905,7 +909,7 @@ body.view-control-buttons .viewControlButton {
   /* Final visible position */
   right: 120px;
   /* background: #D2D2D273; */
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   padding: 10px 0;
@@ -987,7 +991,7 @@ body.view-control-buttons .viewControlButton {
 }
 
 .swiper {
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
   width: 90% !important;
   max-width: 800px;
   border-radius: 12px;
