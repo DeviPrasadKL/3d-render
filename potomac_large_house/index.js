@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var icon = document.createElement('img');
     icon.src = 'img/link.png';
     icon.classList.add('link-hotspot-icon');
-    icon.style.opacity = '0.4'; // Set initial opacity for inactive stated
+    icon.style.opacity = '0.5'; // Set initial opacity for inactive stated
 
     // Set rotation transform.
     var transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
