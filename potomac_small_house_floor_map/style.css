@@ -30,7 +30,7 @@ body {
 }
 
 :root{
-  --panel-color: #B9B9B9;
+  --panel-color: #b9b9b9b0;
 }
 
 a,
@@ -944,6 +944,7 @@ body.view-control-buttons .viewControlButton {
   cursor: pointer;
   transition: all 0.2s ease;
   color: #fff;
+  font-weight: bolder;
   display: flex;
   align-items: center;
   white-space: nowrap;
