@@ -86,6 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  panoElement.addEventListener('click', () => {
+    hideAllLists();
+  })
+
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
     var setMode = function () {

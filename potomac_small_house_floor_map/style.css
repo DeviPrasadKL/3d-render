@@ -878,19 +878,16 @@ body.view-control-buttons .viewControlButton {
   }
 }
 
-
 #floorsList {
   position: fixed;
-  bottom: 90px;
-  /* Final visible position */
-  right: 20px;
-  /* background: #D2D2D273; */
+  bottom: 11%;
+  right: 14%;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   border: 2px solid;
   padding: 10px 0;
-  min-width: 200px;
+  min-width: 100px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
@@ -908,9 +905,8 @@ body.view-control-buttons .viewControlButton {
 #roomsList {
   position: fixed;
   bottom: 90px;
-  /* Final visible position */
-  right: 120px;
-  /* background: #D2D2D273; */
+  bottom: 11%;
+  right: 16%;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border: 2px solid;
