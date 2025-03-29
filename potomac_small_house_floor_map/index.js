@@ -183,6 +183,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // Set up fullscreen mode, if supported.
   fullscreenToggleElement.addEventListener('click', function () {
     screenfull.toggle();
+    if (fullscreenToggleElement.classList.contains('enabled')) {
+      fullscreenToggleElement.classList.remove('enabled');
+      fullscreenToggleElement.setAttribute('tool-tip', 'Fullscreen');
+    } else {
+      fullscreenToggleElement.classList.add('enabled');
+      fullscreenToggleElement.setAttribute('tool-tip', 'Exit Fullscreen');
+    }
   });
 
 

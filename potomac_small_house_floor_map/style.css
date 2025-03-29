@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -31,6 +33,7 @@ body {
 
 :root {
   --panel-color: #b9b9b9b0;
+  --border-gradient: linear-gradient(to right, #f3f3f3 0%, #FFFFFF 48%, #CCCCCC 100%);
 }
 
 a,
@@ -685,16 +688,19 @@ body.view-control-buttons .viewControlButton {
   right: 20px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 8px 24px;
   border-radius: 8px;
-  border: 2px solid;
+  border: 2px solid transparent; 
+  border-image: var(--border-gradient);
+  border-image-slice: 1;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 /* given styles from figma */
 /* .nav-menu {
@@ -723,7 +729,6 @@ body.view-control-buttons .viewControlButton {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
   position: relative;
 }
 
@@ -787,8 +792,8 @@ body.view-control-buttons .viewControlButton {
 }
 
 .nav-item img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   opacity: 0.8;
   transition: opacity 0.3s ease;
   position: absolute;
@@ -807,8 +812,8 @@ body.view-control-buttons .viewControlButton {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 .nav-item .icon.on {
@@ -885,7 +890,9 @@ body.view-control-buttons .viewControlButton {
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
-  border: 2px solid;
+  border: 2px solid transparent; 
+  border-image: var(--border-gradient);
+  border-image-slice: 1;
   padding: 10px 0;
   min-width: 100px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -909,7 +916,9 @@ body.view-control-buttons .viewControlButton {
   right: 10.5rem;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
-  border: 2px solid;
+  border: 2px solid transparent; 
+  border-image: var(--border-gradient);
+  border-image-slice: 1;
   border-radius: 8px;
   padding: 10px 0;
   min-width: 200px;
@@ -948,6 +957,7 @@ body.view-control-buttons .viewControlButton {
   align-items: center;
   white-space: nowrap;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: 'Montserrat', sans-serif; 
 }
 
 .room-item:last-child,
@@ -1003,6 +1013,9 @@ span.text-span {
   width: 90% !important;
   max-width: 800px;
   border-radius: 12px;
+  border: 2px solid transparent; 
+  border-image: var(--border-gradient);
+  border-image-slice: 1;
   padding: 20px;
   position: fixed !important;
   top: 50%;
@@ -1011,8 +1024,6 @@ span.text-span {
   z-index: 1000;
   display: none;
   backdrop-filter: blur(8.5px);
-  border: 1px solid;
-  border-image-source: linear-gradient(90.15deg, #CCCCCC -0.82%, #FFFFFF 46%, rgba(204, 204, 204, 0.8) 100.21%);
 }
 
 .swiper-slide {
