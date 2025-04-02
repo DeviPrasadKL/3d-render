@@ -33,7 +33,6 @@ body {
 
 :root {
   --panel-color: #b9b9b9b0;
-  --border-gradient: linear-gradient(to right, #f3f3f3 0%, #FFFFFF 48%, #CCCCCC 100%);
 }
 
 a,
@@ -702,9 +701,7 @@ body.view-control-buttons .viewControlButton {
   -webkit-backdrop-filter: blur(10px);
   padding: 8px 24px;
   border-radius: 8px;
-  border: 2px solid transparent;
-  /* border-image: var(--border-gradient); */
-  /* border-image-slice: 1; */
+  border: 2px solid #f4f4f4;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -903,9 +900,7 @@ body.view-control-buttons .viewControlButton {
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
-  border: 2px solid transparent;
-  /* border-image: var(--border-gradient); */
-  /* border-image-slice: 1; */
+  border: 2px solid #f4f4f4;
   padding: 10px 0;
   min-width: 100px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -929,9 +924,7 @@ body.view-control-buttons .viewControlButton {
   right: 10.5rem;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
-  border: 2px solid transparent;
-  /* border-image: var(--border-gradient);
-  border-image-slice: 1; */
+  border: 2px solid #f4f4f4;
   border-radius: 8px;
   padding: 10px 0;
   min-width: 200px;
@@ -1026,9 +1019,7 @@ span.text-span {
   width: 90% !important;
   max-width: 800px;
   border-radius: 12px;
-  border: 2px solid transparent;
-  /* border-image: var(--border-gradient);
-  border-image-slice: 1; */
+  border: 2px solid #f4f4f4;
   padding: 20px;
   position: fixed !important;
   top: 50%;
