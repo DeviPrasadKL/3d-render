@@ -634,7 +634,7 @@ var APP_DATA = {
     },
     {
       "id": "13-pantry---m--1f",
-      "name": "Pantry - M -1F",
+      "name": "Pantry - M - 1F",
       "levels": [
         {
           "tileSize": 256,
