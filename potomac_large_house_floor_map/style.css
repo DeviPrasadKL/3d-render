@@ -896,7 +896,7 @@ body.view-control-buttons .viewControlButton {
 #floorsList {
   position: fixed;
   bottom: 5.6rem;
-  right: 9.5rem;
+  right: 10.5rem;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
@@ -921,7 +921,7 @@ body.view-control-buttons .viewControlButton {
   position: fixed;
   bottom: 90px;
   bottom: 5.6rem;
-  right: 10.5rem;
+  right: 11.8rem;
   background: var(--panel-color);
   backdrop-filter: blur(10px);
   border: 2px solid #f4f4f4;
