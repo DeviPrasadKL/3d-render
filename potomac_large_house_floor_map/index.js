@@ -15,15 +15,13 @@
  */
 'use strict';
 
-// NEW: Changed from IIFE to DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
-  // OLD: Core library initializations remain the same
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
   var screenfull = window.screenfull;
   var data = window.APP_DATA;
 
-  // NEW: Swiper initialization and related functions
+  // Initialize Swiper
   var swiper = new Swiper('.swiper', {
     navigation: {
       nextEl: '.swiper-button-next',
@@ -38,14 +36,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // NEW: Floor indicator functionality
+  // Update floor indicator text
   function updateFloorIndicator(index) {
     var floorText = document.querySelector('.swiper-floor');
     floorText.textContent = `Floor ${index + 1}`;
   }
+
+  // Initialize floor indicator
   updateFloorIndicator(0);
 
-  // NEW: Map toggle and close functionality
+  // Handle map toggle
   var mapToggle = document.getElementById('mapToggle');
   var closeSwiper = document.getElementById('closeSwiper');
   var swiperContainer = document.querySelector('.swiper');
@@ -181,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
   autorotateToggleElement.addEventListener('click', toggleAutorotate);
 
   // Set up fullscreen mode, if supported.
-  // NEW: Modified fullscreen toggle with tooltip
   fullscreenToggleElement.addEventListener('click', function () {
     screenfull.toggle();
     if (fullscreenToggleElement.classList.contains('enabled')) {
@@ -193,9 +192,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // NEW: Room and floor organization system
+
+  // Set handler for scene switch.
   if (scenes.length > 0) {
-    // NEW: Room and floor containers and toggles
+    // Organize scenes into rooms and floors
     var roomsContainer = document.querySelector('.rooms-container');
     var floorsContainer = document.querySelector('.floors-container');
     var roomsList = document.getElementById('roomsList');
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update the switchScene function to include active state updates
   function switchScene(scene, preserveView = false) {
     stopAutorotate();
-    // scene.view.setParameters(scene.data.initialViewParameters);
+    scene.view.setParameters(scene.data.initialViewParameters);
     // if (preserveView) {
     //   // Get current view parameters
     //   var currentViewParams = viewer.view().parameters();

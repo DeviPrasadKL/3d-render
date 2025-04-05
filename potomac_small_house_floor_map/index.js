@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update the switchScene function to include active state updates
   function switchScene(scene, preserveView = false) {
     stopAutorotate();
-    // scene.view.setParameters(scene.data.initialViewParameters);
+    scene.view.setParameters(scene.data.initialViewParameters);
     // if (preserveView) {
     //   // Get current view parameters
     //   var currentViewParams = viewer.view().parameters();
