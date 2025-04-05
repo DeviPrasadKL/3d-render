@@ -374,10 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateSceneName(scene) {
     // Remove the -1F, -2F, -3F suffix for display
-    var displayName = scene.data.name
-      .replace(/[-]?\d+F$/, '') // Remove floor suffix
-      .replace(/\s*-\s*[ME]+\s*-/, '') // Remove type indicators
-      .trim();
+    var displayName = scene.data.name.split("-")[0]
     sceneNameElement.textContent = displayName;
   }
 
