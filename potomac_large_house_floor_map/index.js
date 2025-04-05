@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
   mapToggle.addEventListener('click', function () {
     if (swiperContainer.style.display === 'none' || !swiperContainer.style.display) {
       swiperContainer.style.display = 'block';
+      hideAllLists();
       // Sync with current floor
       var currentFloor = document.querySelector('.floor-item.active');
       if (currentFloor) {
@@ -310,8 +311,10 @@ document.addEventListener('DOMContentLoaded', function () {
     floorsToggle.addEventListener('click', function () {
       if (floorsList.classList.contains('visible')) {
         hideAllLists();
+        document.querySelector('.swiper').display = 'none';
       } else {
         showFloorsList();
+        document.querySelector('.swiper').display = 'none';
       }
     });
   }
