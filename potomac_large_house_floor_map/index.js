@@ -15,13 +15,15 @@
  */
 'use strict';
 
+// NEW: Changed from IIFE to DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
+  // OLD: Core library initializations remain the same
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
   var screenfull = window.screenfull;
   var data = window.APP_DATA;
 
-  // Initialize Swiper
+  // NEW: Swiper initialization and related functions
   var swiper = new Swiper('.swiper', {
     navigation: {
       nextEl: '.swiper-button-next',
@@ -36,16 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Update floor indicator text
+  // NEW: Floor indicator functionality
   function updateFloorIndicator(index) {
     var floorText = document.querySelector('.swiper-floor');
     floorText.textContent = `Floor ${index + 1}`;
   }
-
-  // Initialize floor indicator
   updateFloorIndicator(0);
 
-  // Handle map toggle
+  // NEW: Map toggle and close functionality
   var mapToggle = document.getElementById('mapToggle');
   var closeSwiper = document.getElementById('closeSwiper');
   var swiperContainer = document.querySelector('.swiper');
@@ -85,6 +85,10 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error('Required elements not found');
     return;
   }
+
+  panoElement.addEventListener('click', () => {
+    hideAllLists();
+  })
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
@@ -175,38 +179,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Set handler for autorotate toggle.
   autorotateToggleElement.addEventListener('click', toggleAutorotate);
-  const iconOff = document.querySelector('.iconoff');
-  const iconOn = document.querySelector('.iconon');
 
   // Set up fullscreen mode, if supported.
-  if (screenfull.enabled) {
-    document.body.classList.add('fullscreen-enabled');
-    
-    // Set initial icon state
-    iconOff.style.display = 'block';
-    iconOn.style.display = 'none';
+  // NEW: Modified fullscreen toggle with tooltip
+  fullscreenToggleElement.addEventListener('click', function () {
+    screenfull.toggle();
+    if (fullscreenToggleElement.classList.contains('enabled')) {
+      fullscreenToggleElement.classList.remove('enabled');
+      fullscreenToggleElement.setAttribute('tool-tip', 'Fullscreen');
+    } else {
+      fullscreenToggleElement.classList.add('enabled');
+      fullscreenToggleElement.setAttribute('tool-tip', 'Exit Fullscreen');
+    }
+  });
 
-    fullscreenToggleElement.addEventListener('click', function () {
-      screenfull.toggle();
-    });
-
-    // Listen for fullscreen changes
-    screenfull.on('change', function () {
-      if (screenfull.isFullscreen) {
-        iconOff.style.display = 'none';
-        iconOn.style.display = 'block';
-      } else {
-        iconOff.style.display = 'block';
-        iconOn.style.display = 'none';
-      }
-    });
-  } else {
-    document.body.classList.add('fullscreen-disabled');
-  }
-
-  // Set handler for scene switch.
+  // NEW: Room and floor organization system
   if (scenes.length > 0) {
-    // Organize scenes into rooms and floors
+    // NEW: Room and floor containers and toggles
     var roomsContainer = document.querySelector('.rooms-container');
     var floorsContainer = document.querySelector('.floors-container');
     var roomsList = document.getElementById('roomsList');
@@ -231,19 +220,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (scene.data.name.includes('- M -') || scene.data.name.includes('- ME -')) {
         var div = document.createElement('div');
         div.className = 'room-item';
+        var span = document.createElement('span');
+        span.className = 'text-span';
 
         // Remove floor suffix and type indicators for display
         var displayName = scene.data.name
           .replace(/[-]?\d+F$/, '') // Remove floor suffix
           .replace(/\s*-\s*[ME]+\s*-/, '') // Remove type indicators
           .trim();
-        div.textContent = displayName;
+        span.textContent = displayName;
 
         // Extract floor number
         var floorMatch = scene.data.name.match(/(\d+)F$/);
         var floorNumber = floorMatch ? floorMatch[1] : '1';
         div.setAttribute('data-floor', floorNumber);
 
+        div.appendChild(span); // Add the span to the div
         div.style.display = 'none'; // Hide initially
         div.addEventListener('click', function () {
           switchScene(scene, true);
@@ -257,7 +249,10 @@ document.addEventListener('DOMContentLoaded', function () {
     Object.keys(floors).sort().forEach(function (floor) {
       var div = document.createElement('div');
       div.className = 'floor-item';
-      div.textContent = floor + 'F';
+      var span = document.createElement('span');
+      span.className = 'text-span';
+      span.textContent = floor + 'F';
+      div.appendChild(span); // Add the span to the div
       div.addEventListener('click', function () {
         // Hide all rooms first
         document.querySelectorAll('.room-item').forEach(function (item) {
@@ -362,15 +357,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function switchScene(scene, preserveView = false) {
     stopAutorotate();
     // scene.view.setParameters(scene.data.initialViewParameters);
-    if (preserveView) {
-      // Get current view parameters
-      var currentViewParams = viewer.view().parameters();
+    // if (preserveView) {
+    //   // Get current view parameters
+    //   var currentViewParams = viewer.view().parameters();
 
-      scene.view.setParameters(currentViewParams);
-    } else {
-      // Use default view parameters
-      scene.view.setParameters(scene.data.initialViewParameters);
-    }
+    //   scene.view.setParameters(currentViewParams);
+    // } else {
+    //   // Use default view parameters
+    //   scene.view.setParameters(scene.data.initialViewParameters);
+    // }
     scene.scene.switchTo();
     startAutorotate();
     updateSceneName(scene);

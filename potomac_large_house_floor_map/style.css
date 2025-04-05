@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -23,10 +25,14 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   background-color: #000;
   color: #fff;
+}
+
+:root {
+  --panel-color: #b9b9b9b0;
 }
 
 a,
@@ -77,6 +83,8 @@ a:visited {
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: capitalize;
+  font-family: Montserrat;
+  text-shadow: 0px 0px 5.8px #000000;
 }
 
 .mobile #titleBar .sceneName {
@@ -213,7 +221,7 @@ body.single-scene {
 
   border-radius: 5px;
 
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
 
   color: #fff;
 
@@ -237,6 +245,12 @@ body.single-scene {
     -webkit-transform 0.3s,
     transform 0.3s,
     opacity 0.3s;
+
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0px 0px 5.8px #000000;
+  line-height: 100%;
 }
 
 .mobile .link-hotspot {
@@ -681,15 +695,17 @@ body.view-control-buttons .viewControlButton {
   right: 20px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  background: rgba(58, 68, 84, 0.8);
+  gap: 32px;
+  background: var(--panel-color);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 8px 24px;
   border-radius: 8px;
+  border: 2px solid #f4f4f4;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 /* given styles from figma */
 /* .nav-menu {
@@ -718,7 +734,6 @@ body.view-control-buttons .viewControlButton {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
   position: relative;
 }
 
@@ -731,7 +746,7 @@ body.view-control-buttons .viewControlButton {
   transform: translateX(-50%) translateY(-16px);
   padding: 6px 12px;
   /* background: #D2D2D273; */
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
   color: white;
   font-size: 14px;
   border-radius: 4px;
@@ -752,6 +767,11 @@ body.view-control-buttons .viewControlButton {
 .nav-item:hover::after {
   opacity: 1;
   visibility: visible;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0px 0px 5.8px #000000;
+  line-height: 100%;
 }
 
 /* Mobile styles for tooltips */
@@ -782,8 +802,8 @@ body.view-control-buttons .viewControlButton {
 }
 
 .nav-item img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   opacity: 0.8;
   transition: opacity 0.3s ease;
   position: absolute;
@@ -802,8 +822,8 @@ body.view-control-buttons .viewControlButton {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 .nav-item .icon.on {
@@ -873,18 +893,16 @@ body.view-control-buttons .viewControlButton {
   }
 }
 
-
 #floorsList {
   position: fixed;
-  bottom: 90px;
-  /* Final visible position */
-  right: 20px;
-  /* background: #D2D2D273; */
-  background: rgba(58, 68, 84, 0.67);
+  bottom: 5.6rem;
+  right: 9.5rem;
+  background: var(--panel-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
+  border: 2px solid #f4f4f4;
   padding: 10px 0;
-  min-width: 200px;
+  min-width: 100px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
@@ -902,11 +920,11 @@ body.view-control-buttons .viewControlButton {
 #roomsList {
   position: fixed;
   bottom: 90px;
-  /* Final visible position */
-  right: 120px;
-  /* background: #D2D2D273; */
-  background: rgba(58, 68, 84, 0.67);
+  bottom: 5.6rem;
+  right: 10.5rem;
+  background: var(--panel-color);
   backdrop-filter: blur(10px);
+  border: 2px solid #f4f4f4;
   border-radius: 8px;
   padding: 10px 0;
   min-width: 200px;
@@ -940,10 +958,12 @@ body.view-control-buttons .viewControlButton {
   cursor: pointer;
   transition: all 0.2s ease;
   color: #fff;
+  font-weight: bolder;
   display: flex;
   align-items: center;
   white-space: nowrap;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .room-item:last-child,
@@ -967,6 +987,14 @@ body.view-control-buttons .viewControlButton {
   display: none !important;
 }
 
+span.text-span {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0px 0px 5.8px #000000;
+  line-height: 100%;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
 
@@ -987,10 +1015,11 @@ body.view-control-buttons .viewControlButton {
 }
 
 .swiper {
-  background: rgba(58, 68, 84, 0.67);
+  background: var(--panel-color);
   width: 90% !important;
   max-width: 800px;
   border-radius: 12px;
+  border: 2px solid #f4f4f4;
   padding: 20px;
   position: fixed !important;
   top: 50%;
@@ -998,6 +1027,7 @@ body.view-control-buttons .viewControlButton {
   transform: translate(-50%, -50%);
   z-index: 1000;
   display: none;
+  backdrop-filter: blur(8.5px);
 }
 
 .swiper-slide {
@@ -1022,9 +1052,11 @@ body.view-control-buttons .viewControlButton {
 .swiper-floor {
   text-align: center;
   color: #fff;
-  font-size: 1.7em;
   padding: 30px;
-  font-weight: bold;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1051,8 +1083,9 @@ body.view-control-buttons .viewControlButton {
   .close-swiper {
     padding: 30px !important;
   }
-  #fullscreenToggle{
-    display: none !important;
+
+  #fullscreenToggle {
+    display: none;
   }
 }
 
@@ -1069,20 +1102,9 @@ body.view-control-buttons .viewControlButton {
 
 span#closeSwiper {
   position: absolute;
-  border-radius: 3.31px;
-  border-width: 1.66px;
-  padding: 5px 10px;
-  background: #C8C8C869;
-  top: 25px;
+  z-index: 10000;
   cursor: pointer;
-  right: 20px;
-  /* border: 1.66px solid; */
-  z-index: 1000;
-  font-family: Montserrat, sans-serif;
-  font-weight: 600;
-  font-size: 14.88px;
-  line-height: 100%;
-  /* box-shadow: 0px 0px 6.13px 0px #000000FA; */
+  top: 15px;
 }
 
 .close-swiper {
