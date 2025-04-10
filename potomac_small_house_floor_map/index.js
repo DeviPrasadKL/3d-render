@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var targetSceneName = targetSceneData.name.split("-")[0].trim();
 
       // If the target scene contains "Hallway", activate the 2F floor item
-      if (active1F && targetSceneName.includes("Hallway")) {
+      if (active1F && targetSceneDataName.includes("Hallway - E - 1F")) {
         // Find and activate the 2F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === '2F') {
