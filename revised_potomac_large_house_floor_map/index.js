@@ -433,6 +433,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add click event handler.
     wrapper.addEventListener('click', function () {
+      console.log('Link Hotspot clicked:', hotspot);
 
       let active1F = null;
       let active2F = null;
@@ -451,10 +452,12 @@ document.addEventListener('DOMContentLoaded', function () {
       // Get the target scene name
       var targetSceneData = findSceneDataById(hotspot.target);
       var targetSceneDataName = targetSceneData.name;
+      console.log('targetSceneDataName', targetSceneDataName);
+      
       var targetSceneName = targetSceneData.name.split("-")[0].trim();
 
       // If the target scene contains "Hallway", activate the 2F floor item
-      if (active1F && targetSceneDataName.includes("Hallway - E - 2F")) {
+      if (active1F && targetSceneDataName.includes("Hallway - ME - 2F")) {
         // Find and activate the 2F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === '2F') {
@@ -480,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove('active');
           }
         });
-      } else if (active2F && targetSceneDataName.includes("Hallway - E - 1F")) {
+      } else if (active2F && targetSceneDataName.includes("Foyer - ME - 1F")) {
         // Find and activate the 1F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === '1F') {
@@ -532,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove('active');
           }
         });
-      } else if (active3F && targetSceneDataName.includes("Hallway - E - 2F")) {
+      } else if (active3F && targetSceneDataName.includes("Hallway - ME - 2F")) {
         // Find and activate the 2F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === '2F') {
@@ -581,6 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function createInfoHotspotElement(hotspot) {
+    console.log('Info Hotspot clicked:', hotspot);
 
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
@@ -641,7 +645,10 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Show content when hotspot is clicked.
-    wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
+    wrapper.querySelector('.info-hotspot-header').addEventListener('click', function() {
+      console.log('Info Hotspot clicked:', hotspot);
+      toggle();
+    });
 
     // Hide content when close icon is clicked.
     modal.querySelector('.info-hotspot-close-wrapper').addEventListener('click', toggle);
