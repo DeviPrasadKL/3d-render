@@ -252,7 +252,7 @@ var APP_DATA = {
     },
     {
       "id": "5-entry---e---1f",
-      "name": "Entry - E - 1F",
+      "name": "Entry - 1 - 1F",
       "levels": [
         {
           "tileSize": 256,
@@ -1096,7 +1096,7 @@ var APP_DATA = {
     },
     {
       "id": "22-hallway---2---2f",
-      "name": "Hallway - 2 - 2F",
+      "name": "Hallway - E - 2F",
       "levels": [
         {
           "tileSize": 256,
