@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove('active');
           }
         });
-      } else if (active3F && targetSceneDataName.includes("Hallway - E - 2F")) {
+      } else if (active3F && targetSceneDataName.includes("Hallway - 2 - 2F")) {
         // Find and activate the 2F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === '2F') {

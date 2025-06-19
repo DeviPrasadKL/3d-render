@@ -1096,7 +1096,7 @@ var APP_DATA = {
     },
     {
       "id": "22-hallway---2---2f",
-      "name": "Hallway - E - 2F",
+      "name": "Hallway - 2 - 2F",
       "levels": [
         {
           "tileSize": 256,
