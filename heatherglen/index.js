@@ -395,17 +395,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update the switchScene function to include active state updates
   function switchScene(scene, preserveView = false) {
     // stopAutorotate();
-    scene.view.setParameters(scene.data.initialViewParameters);
-    // if (preserveView) {
-    //   // Get current view parameters
-    //   var currentViewParams = viewer.view().parameters();
-
-    //   scene.view.setParameters(currentViewParams);
-    // } else {
-    //   // Use default view parameters
-    //   scene.view.setParameters(scene.data.initialViewParameters);
-    // }
+    let currentViewParams = null;
+    if (preserveView) {
+      // Get current view parameters from the active view
+      currentViewParams = viewer.view().parameters();
+    }
     scene.scene.switchTo();
+    if (preserveView && currentViewParams) {
+      scene.view.setParameters(currentViewParams);
+    } else if (!preserveView) {
+      scene.view.setParameters(scene.data.initialViewParameters);
+    }
     // startAutorotate();
     updateSceneName(scene);
     updateActiveStates(scene);
