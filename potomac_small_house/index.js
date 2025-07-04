@@ -357,24 +357,52 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // todo: this is only for small house
+  let currentScene = null;
+
   // Update the switchScene function to include active state updates
+  // todo: this is only for small house (Replace this function later)
   function switchScene(scene, preserveView = false) {
-    // stopAutorotate();
+
+    let previousSceneName = currentScene ? currentScene.data.name : null;
+
+    // Determine if special view angle should be applied
+    const isTargetEntryScene = scene.data.name === "Entry - 1 - 1F";
+    const isFromExterior = previousSceneName === "Exterior view - M - 1F";
+
+    let customParams = null;
+    if (isTargetEntryScene && isFromExterior) {
+      customParams = {
+        yaw: Math.PI / 1,   // 180 degrees
+        pitch: Math.PI / 25 // ≈7.2 degrees
+      };
+    }
+
+    // Store current view before switching, if preserving view
     let currentViewParams = null;
     if (preserveView) {
-      // Get current view parameters from the active view
       currentViewParams = viewer.view().parameters();
     }
+
+    // Actually switch the scene
     scene.scene.switchTo();
-    if (preserveView && currentViewParams) {
+
+    // Set view parameters
+    if (customParams) {
+      scene.view.setParameters(customParams);
+    } else if (preserveView && currentViewParams) {
       scene.view.setParameters(currentViewParams);
-    } else if (!preserveView) {
+    } else {
       scene.view.setParameters(scene.data.initialViewParameters);
     }
-    // startAutorotate();
+
     updateSceneName(scene);
     updateActiveStates(scene);
+
+    // Update current scene reference
+    currentScene = scene;
   }
+  // todo: -----------------END-----------------
 
   function updateSceneName(scene) {
     // Remove the -1F, -2F, -3F suffix for display
@@ -441,13 +469,13 @@ document.addEventListener('DOMContentLoaded', function () {
       // Find the floor items
       document.querySelectorAll('.floor-item').forEach(function (item) {
         if (item.textContent.trim() === '2F' && item.classList.contains('active')) {
-            active2F = item;
-        }else if (item.textContent.trim() === '1F' && item.classList.contains('active')) {
-            active1F = item;
-        }else if (item.textContent.trim() === '3F' && item.classList.contains('active')) {
-            active3F = item;
+          active2F = item;
+        } else if (item.textContent.trim() === '1F' && item.classList.contains('active')) {
+          active1F = item;
+        } else if (item.textContent.trim() === '3F' && item.classList.contains('active')) {
+          active3F = item;
         }
-    });
+      });
 
       // Get the target scene name
       var targetSceneData = findSceneDataById(hotspot.target);
