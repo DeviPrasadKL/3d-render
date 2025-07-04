@@ -39,7 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update floor indicator text
   function updateFloorIndicator(index) {
     var floorText = document.querySelector('.swiper-floor');
-    floorText.textContent = `Floor ${index + 1}`;
+    if (index === 0) {
+      floorText.textContent = "Ground Floor"
+    } else {
+      floorText.textContent = `Floor ${index}`;
+    }
   }
 
   // Initialize floor indicator
@@ -60,8 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
       // Sync with current floor
       var currentFloor = document.querySelector('.floor-item.active');
       if (currentFloor) {
-        var floorNumber = parseInt(currentFloor.textContent);
-        swiper.slideTo(floorNumber - 1);
+        if (currentFloor.textContent !== "GF") {
+          var floorNumber = parseInt(currentFloor.textContent);
+          swiper.slideTo(floorNumber);
+        } else {
+          swiper.slideTo(0);
+        }
       }
     } else {
       swiperContainer.style.display = 'none';
@@ -470,13 +478,13 @@ document.addEventListener('DOMContentLoaded', function () {
       // Find the floor items
       document.querySelectorAll('.floor-item').forEach(function (item) {
         if (item.textContent.trim() === 'GF' && item.classList.contains('active')) {
-            activeGF = item;
+          activeGF = item;
         } else if (item.textContent.trim() === '2F' && item.classList.contains('active')) {
-            active2F = item;
+          active2F = item;
         } else if (item.textContent.trim() === '1F' && item.classList.contains('active')) {
-            active1F = item;
+          active1F = item;
         } else if (item.textContent.trim() === '3F' && item.classList.contains('active')) {
-            active3F = item;
+          active3F = item;
         }
       });
 
@@ -484,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var targetSceneData = findSceneDataById(hotspot.target);
       var targetSceneDataName = targetSceneData.name;
       console.log('targetSceneDataName', targetSceneDataName);
-      
+
       var targetSceneName = targetSceneData.name.split("-")[0].trim();
 
       // If the target scene is on 1F and currently on GF, activate 1F
@@ -511,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove('active');
           }
         });
-      // Existing logic for 1F to 2F
+        // Existing logic for 1F to 2F
       } else if (active1F && targetSceneDataName.includes("Stairs - 1 - B")) {
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === 'B') {
@@ -691,7 +699,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Show content when hotspot is clicked.
-    wrapper.querySelector('.info-hotspot-header').addEventListener('click', function() {
+    wrapper.querySelector('.info-hotspot-header').addEventListener('click', function () {
       console.log('Info Hotspot clicked:', hotspot);
       toggle();
     });
@@ -740,7 +748,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var floorKeys = Object.keys(floors).sort(typeof customFloorSort === 'function' ? customFloorSort : undefined);
   var initialScene;
   if (floors['GF'] && floors['GF'].length > 0) {
-    var hallwayE = floors['GF'].find(function(scene) {
+    var hallwayE = floors['GF'].find(function (scene) {
       return scene.data.name.trim() === 'Hallway - E - B';
     });
     if (hallwayE) {
