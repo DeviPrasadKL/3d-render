@@ -272,13 +272,33 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Create floor items
+    // Helper function to get the floor name
+    function getFloorName(floor) {
+      const floorNames = {
+        '1': 'First Floor',
+        '2': 'Second Floor',
+        '3': 'Third Floor',
+        '4': 'Fourth Floor',
+        '5': 'Fifth Floor',
+        '6': 'Sixth Floor',
+        '7': 'Seventh Floor',
+        '8': 'Eighth Floor',
+        '9': 'Ninth Floor',
+        'GF': 'Ground Floor',
+        'B': 'Basement'
+      };
+      return floorNames[floor] || floor;
+    }
+
     Object.keys(floors).sort(customFloorSort).forEach(function (floor) {
       var div = document.createElement('div');
       div.className = 'floor-item';
       var span = document.createElement('span');
       span.className = 'text-span';
-      span.textContent = (floor === 'GF' ? 'GF' : floor + 'F');
+
+      // Modify the textContent based on floor number
+      span.textContent = getFloorName(floor);
+
       div.appendChild(span); // Add the span to the div
       div.addEventListener('click', function () {
         // Hide all rooms first
@@ -322,14 +342,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Show rooms for GF first if it exists, else show rooms for the initial floor
-    var initialFloor;
-    if (floors['GF'] && floors['GF'].length > 0) {
-      initialFloor = 'GF';
-    } else {
-      var initialFloorMatch = scenes[0].data.name.match(/(\d+)F$/);
-      var initialBasementMatch = scenes[0].data.name.match(/B$/);
-      initialFloor = initialBasementMatch ? 'GF' : (initialFloorMatch ? initialFloorMatch[1] : '1');
-    }
+    let initialFloor;
+    let initialFloorMatch = scenes[0].data.name.match(/(\d+)F$/);
+    let initialBasementMatch = scenes[0].data.name.match(/B$/);
+    initialFloor = initialBasementMatch ? 'GF' : (initialFloorMatch ? initialFloorMatch[1] : '1');
     document.querySelectorAll('.room-item[data-floor="' + initialFloor + '"]').forEach(function (item) {
       item.style.display = 'flex';
     });
@@ -404,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // if (preserveView && currentViewParams) {
     //   scene.view.setParameters(currentViewParams);
     // } else if (!preserveView) {
-      scene.view.setParameters(scene.data.initialViewParameters);
+    scene.view.setParameters(scene.data.initialViewParameters);
     // }
     // startAutorotate();
     updateSceneName(scene);
@@ -742,23 +758,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     return null;
   }
+  switchScene(scenes[0]);
 
   // Display the initial scene.
   // On load, if 'GF' exists, start with 'Hallway - E - B' if present, else first scene of 'GF', else first sorted floor
-  var floorKeys = Object.keys(floors).sort(typeof customFloorSort === 'function' ? customFloorSort : undefined);
-  var initialScene;
-  if (floors['GF'] && floors['GF'].length > 0) {
-    var hallwayE = floors['GF'].find(function (scene) {
-      return scene.data.name.trim() === 'Hallway - E - B';
-    });
-    if (hallwayE) {
-      initialScene = hallwayE;
-    } else {
-      initialScene = floors['GF'][0];
-    }
-  } else {
-    var initialFloorKey = floorKeys[0];
-    initialScene = floors[initialFloorKey][0];
-  }
-  switchScene(initialScene);
+  // var floorKeys = Object.keys(floors).sort(typeof customFloorSort === 'function' ? customFloorSort : undefined);
+  // var initialScene;
+  // if (floors['GF'] && floors['GF'].length > 0) {
+  //   var hallwayE = floors['GF'].find(function (scene) {
+  //     return scene.data.name.trim() === 'Hallway - E - B';
+  //   });
+  //   if (hallwayE) {
+  //     initialScene = hallwayE;
+  //   } else {
+  //     initialScene = floors['GF'][0];
+  //   }
+  // } else {
+  //   var initialFloorKey = floorKeys[0];
+  //   initialScene = floors[initialFloorKey][0];
+  // }
+  // switchScene(initialScene);
 });

@@ -1465,7 +1465,7 @@ var APP_DATA = {
           "yaw": 0.8296667041327641,
           "pitch": 0.6618964115705541,
           "rotation": 0,
-          "target": "77-veranda---1---b"
+          "target": "77-veranda---1---1f"
         },
         {
           "yaw": 0.149387568224709,
@@ -1527,7 +1527,7 @@ var APP_DATA = {
           "yaw": 2.3947479541010477,
           "pitch": 0.31083280175687555,
           "rotation": 0,
-          "target": "77-veranda---1---b"
+          "target": "77-veranda---1---1f"
         },
         {
           "yaw": 2.7494331375143375,
@@ -3651,14 +3651,14 @@ var APP_DATA = {
           "yaw": -0.06667835899061636,
           "pitch": 0.1639626168473658,
           "rotation": 0,
-          "target": "76-veranda---m---b"
+          "target": "76-veranda---m---1f"
         }
       ],
       "infoHotspots": []
     },
     {
-      "id": "76-veranda---m---b",
-      "name": "Veranda - M - B",
+      "id": "76-veranda---m---1f",
+      "name": "Veranda - M - 1F",
       "levels": [
         {
           "tileSize": 256,
@@ -3689,7 +3689,7 @@ var APP_DATA = {
           "yaw": -0.587520013086916,
           "pitch": 0.3200940362095803,
           "rotation": 0,
-          "target": "77-veranda---1---b"
+          "target": "77-veranda---1---1f"
         },
         {
           "yaw": -3.111620586816695,
@@ -3701,8 +3701,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "77-veranda---1---b",
-      "name": "Veranda - 1 - B",
+      "id": "77-veranda---1---1f",
+      "name": "Veranda - 1 - 1F",
       "levels": [
         {
           "tileSize": 256,
@@ -3733,7 +3733,7 @@ var APP_DATA = {
           "yaw": 2.646857792200983,
           "pitch": 0.29049759173667766,
           "rotation": 0,
-          "target": "76-veranda---m---b"
+          "target": "76-veranda---m---1f"
         },
         {
           "yaw": 0.8606713779895987,
