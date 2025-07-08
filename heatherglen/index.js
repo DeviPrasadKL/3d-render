@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       prevEl: '.swiper-button-prev',
     },
     loop: false,
-    initialSlide: 0,
+    initialSlide: 1, // 1st floor (index 1)
     on: {
       slideChange: function () {
         updateFloorIndicator(this.activeIndex);
@@ -44,10 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       floorText.textContent = `Floor ${index}`;
     }
+    // Show the correct floor plan image for the current slide
+    let floorPlanImages = document.querySelectorAll('.floorplan-image');
+    floorPlanImages.forEach(function (img, idx) {
+      img.style.display = (idx === index) ? 'block' : 'none';
+    });
   }
 
-  // Initialize floor indicator
-  updateFloorIndicator(0);
+  // Initialize floor indicator and floor plan image
+  updateFloorIndicator(1); // Set to 1st floor on initial render
 
   // Handle map toggle
   var mapToggle = document.getElementById('mapToggle');
@@ -55,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var swiperContainer = document.querySelector('.swiper');
   closeSwiper.addEventListener('click', function () {
     swiperContainer.style.display = 'none';
-    console.log('closeSwiper');
   });
   mapToggle.addEventListener('click', function () {
     if (swiperContainer.style.display === 'none' || !swiperContainer.style.display) {
@@ -297,7 +301,11 @@ document.addEventListener('DOMContentLoaded', function () {
       span.className = 'text-span';
 
       // Modify the textContent based on floor number
-      span.textContent = getFloorName(floor);
+      if (floor !== "GF"){
+        span.textContent = floor + "F";
+      } else {
+        span.textContent = floor;
+      }
 
       div.appendChild(span); // Add the span to the div
       div.addEventListener('click', function () {
@@ -333,9 +341,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update swiper if it's visible
         if (swiperContainer.style.display === 'block') {
-          var floorKeys = Object.keys(floors).sort(customFloorSort);
-          var swiperIndex = floorKeys.indexOf(floor);
-          swiper.slideTo(swiperIndex);
+          const floorText = document.querySelector('.swiper-floor');
+          if (floor !== "GF") {
+            floorText.textContent = `Floor ${floor}`
+            var floorNumber = parseInt(floor);
+            swiper.slideTo(floorNumber);
+          } else {
+            floorText.textContent = "Ground Floor"
+            swiper.slideTo(0);
+          }
         }
       });
       floorsContainer.appendChild(div);
@@ -545,6 +559,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (swiperContainer && swiperContainer.style.display === 'block') {
               var swiper = document.querySelector('.swiper').swiper;
               if (swiper) {
+                document.querySelector('.swiper-floor').textContent = "Ground Floor";
                 swiper.slideTo(0);// GF would be at index 1 (0-based)
               }
             }
@@ -569,6 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (swiperContainer && swiperContainer.style.display === 'block') {
               var swiper = document.querySelector('.swiper').swiper;
               if (swiper) {
+                document.querySelector('.swiper-floor').textContent = "Ground Floor";
                 swiper.slideTo(0); // 1F would be at index 0 (0-based)
               }
             }
@@ -583,24 +599,25 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove('active');
           }
         });
-      } else if (active2F && targetSceneDataName.includes("Hallway - E - 3F")) {
+      } else if (active1F && targetSceneDataName.includes("Stairs - E - 2F")) {
         // Find and activate the 3F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
-          if (item.textContent.trim() === '3F') {
+          if (item.textContent.trim() === '2F') {
             item.classList.add('active');
             // Also update the swiper if it's visible
             var swiperContainer = document.querySelector('.swiper');
             if (swiperContainer && swiperContainer.style.display === 'block') {
               var swiper = document.querySelector('.swiper').swiper;
               if (swiper) {
-                swiper.slideTo(2); // 3F would be at index 2 (0-based)
+                document.querySelector('.swiper-floor').textContent = "Floor 2";
+                swiper.slideTo(2); // 2F would be at index 2 (0-based)
               }
             }
-            // Show rooms for floor 3
+            // Show rooms for floor 2
             document.querySelectorAll('.room-item').forEach(function (roomItem) {
               roomItem.style.display = 'none';
             });
-            document.querySelectorAll('.room-item[data-floor="3"]').forEach(function (roomItem) {
+            document.querySelectorAll('.room-item[data-floor="2"]').forEach(function (roomItem) {
               roomItem.style.display = 'flex';
             });
           } else {
@@ -617,6 +634,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (swiperContainer && swiperContainer.style.display === 'block') {
               var swiper = document.querySelector('.swiper').swiper;
               if (swiper) {
+                document.querySelector('.swiper-floor').textContent = "Floor 1";
                 swiper.slideTo(1); // 2F would be at index 1 (0-based)
               }
             }
