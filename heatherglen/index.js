@@ -36,13 +36,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  function getFloorName(floor) {
+    const floorNames = ["Garage Floor", "First Floor", "Second Floor", "Third Floor"];
+    return floorNames[floor];
+  }
+
   // Update floor indicator text
   function updateFloorIndicator(index) {
     var floorText = document.querySelector('.swiper-floor');
     if (index === 0) {
-      floorText.textContent = "Ground Floor"
+      floorText.textContent = "Garage Floor"
     } else {
-      floorText.textContent = `Floor ${index}`;
+      floorText.textContent = getFloorName(index);
     }
     // Show the correct floor plan image for the current slide
     let floorPlanImages = document.querySelectorAll('.floorplan-image');
@@ -276,24 +281,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Helper function to get the floor name
-    function getFloorName(floor) {
-      const floorNames = {
-        '1': 'First Floor',
-        '2': 'Second Floor',
-        '3': 'Third Floor',
-        '4': 'Fourth Floor',
-        '5': 'Fifth Floor',
-        '6': 'Sixth Floor',
-        '7': 'Seventh Floor',
-        '8': 'Eighth Floor',
-        '9': 'Ninth Floor',
-        'GF': 'Ground Floor',
-        'B': 'Basement'
-      };
-      return floorNames[floor] || floor;
-    }
-
     Object.keys(floors).sort(customFloorSort).forEach(function (floor) {
       var div = document.createElement('div');
       div.className = 'floor-item';
@@ -301,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
       span.className = 'text-span';
 
       // Modify the textContent based on floor number
-      if (floor !== "GF"){
+      if (floor !== "GF") {
         span.textContent = floor + "F";
       } else {
         span.textContent = floor;
@@ -343,11 +330,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (swiperContainer.style.display === 'block') {
           const floorText = document.querySelector('.swiper-floor');
           if (floor !== "GF") {
-            floorText.textContent = `Floor ${floor}`
+            floorText.textContent = getFloorName(floor);
             var floorNumber = parseInt(floor);
             swiper.slideTo(floorNumber);
           } else {
-            floorText.textContent = "Ground Floor"
+            floorText.textContent = "Garage Floor"
             swiper.slideTo(0);
           }
         }
@@ -499,8 +486,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add click event handler.
     wrapper.addEventListener('click', function () {
-      console.log('Link Hotspot clicked:', hotspot);
-
       let activeGF = null;
       let active1F = null;
       let active2F = null;
@@ -521,8 +506,6 @@ document.addEventListener('DOMContentLoaded', function () {
       // Get the target scene name
       var targetSceneData = findSceneDataById(hotspot.target);
       var targetSceneDataName = targetSceneData.name;
-      console.log('targetSceneDataName', targetSceneDataName);
-
       var targetSceneName = targetSceneData.name.split("-")[0].trim();
 
       // If the target scene is on 1F and currently on GF, activate 1F
@@ -559,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (swiperContainer && swiperContainer.style.display === 'block') {
               var swiper = document.querySelector('.swiper').swiper;
               if (swiper) {
-                document.querySelector('.swiper-floor').textContent = "Ground Floor";
+                document.querySelector('.swiper-floor').textContent = "Garage Floor";
                 swiper.slideTo(0);// GF would be at index 1 (0-based)
               }
             }
@@ -584,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (swiperContainer && swiperContainer.style.display === 'block') {
               var swiper = document.querySelector('.swiper').swiper;
               if (swiper) {
-                document.querySelector('.swiper-floor').textContent = "Ground Floor";
+                document.querySelector('.swiper-floor').textContent = "Garage Floor";
                 swiper.slideTo(0); // 1F would be at index 0 (0-based)
               }
             }
