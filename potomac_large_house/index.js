@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update floor indicator text
   function updateFloorIndicator(index) {
     var floorText = document.querySelector('.swiper-floor');
-    floorText.textContent = `Floor ${index + 1}`;
+    const floorNames = ["First Floor", "Second Floor", "Third Floor"];
+    floorText.textContent = floorNames[index];
   }
 
   // Initialize floor indicator
