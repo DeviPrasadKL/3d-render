@@ -133,12 +133,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize viewer.
   var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
 
+  // Set a fixed cache-busting version string for this tour build (update this when you re-generate the tour)
+  var cacheBuster = 'v=250710-1300'; // Example: v=YYMMDD-HHMM, update as needed for each build
+
   // Create scenes.
   var scenes = data.scenes.map(function (data) {
     var urlPrefix = "tiles";
+    // Add cache buster to all tile and preview URLs
+    var tileUrl = urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg?" + cacheBuster;
+    var previewUrl = urlPrefix + "/" + data.id + "/preview.jpg?" + cacheBuster;
     var source = Marzipano.ImageUrlSource.fromString(
-      urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
-      { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
+      tileUrl,
+      { cubeMapPreviewUrl: previewUrl });
     var geometry = new Marzipano.CubeGeometry(data.levels);
 
     var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
@@ -443,19 +449,19 @@ document.addEventListener('DOMContentLoaded', function () {
       // Find the floor items
       document.querySelectorAll('.floor-item').forEach(function (item) {
         if (item.textContent.trim() === '2F' && item.classList.contains('active')) {
-            active2F = item;
-        }else if (item.textContent.trim() === '1F' && item.classList.contains('active')) {
-            active1F = item;
-        }else if (item.textContent.trim() === '3F' && item.classList.contains('active')) {
-            active3F = item;
+          active2F = item;
+        } else if (item.textContent.trim() === '1F' && item.classList.contains('active')) {
+          active1F = item;
+        } else if (item.textContent.trim() === '3F' && item.classList.contains('active')) {
+          active3F = item;
         }
-    });
+      });
 
       // Get the target scene name
       var targetSceneData = findSceneDataById(hotspot.target);
       var targetSceneDataName = targetSceneData.name;
       console.log('targetSceneDataName', targetSceneDataName);
-      
+
       var targetSceneName = targetSceneData.name.split("-")[0].trim();
 
       // If the target scene contains "Hallway", activate the 2F floor item
@@ -647,7 +653,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Show content when hotspot is clicked.
-    wrapper.querySelector('.info-hotspot-header').addEventListener('click', function() {
+    wrapper.querySelector('.info-hotspot-header').addEventListener('click', function () {
       console.log('Info Hotspot clicked:', hotspot);
       toggle();
     });
