@@ -189,8 +189,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "4-dinning---m---1f",
-      "name": "Dinning - M - 1F",
+      "id": "4-dining---m---1f",
+      "name": "Dining - M - 1F",
       "levels": [
         {
           "tileSize": 256,
@@ -477,7 +477,7 @@ var APP_DATA = {
           "yaw": -0.0845828006914342,
           "pitch": 0.26126988520209693,
           "rotation": 0,
-          "target": "4-dinning---m---1f"
+          "target": "4-dining---m---1f"
         },
         {
           "yaw": -1.5949617226873585,
@@ -539,7 +539,7 @@ var APP_DATA = {
           "yaw": -1.9838822660538895,
           "pitch": 0.6032498875299588,
           "rotation": 0,
-          "target": "4-dinning---m---1f"
+          "target": "4-dining---m---1f"
         },
         {
           "yaw": 3.1283241358935454,
@@ -583,7 +583,7 @@ var APP_DATA = {
           "yaw": 0.4629851984598101,
           "pitch": 0.31398830312783055,
           "rotation": 0,
-          "target": "4-dinning---m---1f"
+          "target": "4-dining---m---1f"
         },
         {
           "yaw": 2.662447054718947,
@@ -689,7 +689,7 @@ var APP_DATA = {
           "yaw": -0.12692487304939348,
           "pitch": 0.3204569363931249,
           "rotation": 0,
-          "target": "4-dinning---m---1f"
+          "target": "4-dining---m---1f"
         },
         {
           "yaw": 1.5409089564447154,
@@ -751,7 +751,7 @@ var APP_DATA = {
           "yaw": -3.104482013768763,
           "pitch": 0.4031185596371536,
           "rotation": 0,
-          "target": "4-dinning---m---1f"
+          "target": "4-dining---m---1f"
         }
       ],
       "infoHotspots": []
@@ -795,7 +795,7 @@ var APP_DATA = {
           "yaw": -2.519215003586188,
           "pitch": 0.2738950355558387,
           "rotation": 0,
-          "target": "4-dinning---m---1f"
+          "target": "4-dining---m---1f"
         },
         {
           "yaw": -2.759361650997775,
