@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 * {
   -webkit-box-sizing: border-box;
@@ -25,7 +25,7 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   background-color: #000;
   color: #fff;
@@ -237,13 +237,9 @@ body.single-scene {
   -webkit-transform: translateX(-8px);
   transform: translateX(-8px);
 
-  -webkit-transition: -ms-transform 0.3s,
-    -webkit-transform 0.3s,
-    transform 0.3s,
+  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
     opacity 0.3s;
-  transition: -ms-transform 0.3s,
-    -webkit-transform 0.3s,
-    transform 0.3s,
+  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
     opacity 0.3s;
 
   font-family: Montserrat;
@@ -310,8 +306,7 @@ body.single-scene {
   cursor: pointer;
   -webkit-transition: width 0.3s ease-in-out 0.5s,
     border-radius 0.3s ease-in-out 0.5s;
-  transition: width 0.3s ease-in-out 0.5s,
-    border-radius 0.3s ease-in-out 0.5s;
+  transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
 }
 
 .mobile .info-hotspot .info-hotspot-header {
@@ -323,10 +318,8 @@ body.single-scene {
 .desktop.no-touch .info-hotspot .info-hotspot-header:hover {
   width: 260px;
   border-radius: 5px;
-  -webkit-transition: width 0.3s ease-in-out,
-    border-radius 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out,
-    border-radius 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-header,
@@ -336,10 +329,8 @@ body.single-scene {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  -webkit-transition: width 0.3s ease-in-out,
-    border-radius 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out,
-    border-radius 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
 .info-hotspot .info-hotspot-icon-wrapper {
@@ -366,24 +357,23 @@ body.single-scene {
   height: 40px;
   padding: 0;
   overflow: hidden;
-  -webkit-transition: width 0s 0.4s,
-    padding 0s 0.4s;
-  transition: width 0s 0.4s,
-    padding 0s 0.4s;
+  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
+  transition: width 0s 0.4s, padding 0s 0.4s;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-title-wrapper,
-.desktop.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper {
+.desktop.no-touch
+  .info-hotspot
+  .info-hotspot-header:hover
+  .info-hotspot-title-wrapper {
   width: 220px;
   padding: 0 5px;
-  -webkit-transition: width 0s 0.4s,
-    padding 0s 0.4s;
-  transition: width 0s 0.4s,
-    padding 0s 0.4s;
+  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
+  transition: width 0s 0.4s, padding 0s 0.4s;
 }
 
 .info-hotspot .info-hotspot-title-wrapper:before {
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
@@ -414,14 +404,10 @@ body.single-scene {
   -ms-transform-origin: 0 50% 0;
   -webkit-transform-origin: 0 50% 0;
   transform-origin: 0 50% 0;
-  -webkit-transition: -ms-transform 0.3s 0.3s,
-    -webkit-transform 0.3s 0.3s,
-    transform 0.3s 0.3s,
-    visibility 0s 0.6s;
-  transition: -ms-transform 0.3s 0.3s,
-    -webkit-transform 0.3s 0.3s,
-    transform 0.3s 0.3s,
-    visibility 0s 0.6s;
+  -webkit-transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0.6s;
+  transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0.6s;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-close-wrapper {
@@ -429,13 +415,9 @@ body.single-scene {
   -ms-transform: perspective(200px) rotateY(0deg);
   -webkit-transform: perspective(200px) rotateY(0deg);
   transform: perspective(200px) rotateY(0deg);
-  -webkit-transition: -ms-transform 0.3s,
-    -webkit-transform 0.3s,
-    transform 0.3s,
+  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
     visibility 0s 0s;
-  transition: -ms-transform 0.3s,
-    -webkit-transform 0.3s,
-    transform 0.3s,
+  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
     visibility 0s 0s;
 }
 
@@ -465,13 +447,9 @@ body.single-scene {
   -ms-transform-origin: 50% 0 0;
   -webkit-transform-origin: 50% 0 0;
   transform-origin: 50% 0 0;
-  -webkit-transition: -ms-transform 0.3s,
-    -webkit-transform 0.3s,
-    transform 0.3s,
+  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
     visibility 0s 0.3s;
-  transition: -ms-transform 0.3s,
-    -webkit-transform 0.3s,
-    transform 0.3s,
+  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
     visibility 0s 0.3s;
 
   -moz-user-select: text;
@@ -485,14 +463,10 @@ body.single-scene {
   -ms-transform: perspective(200px) rotateX(0deg);
   -webkit-transform: perspective(200px) rotateX(0deg);
   transform: perspective(200px) rotateX(0deg);
-  -webkit-transition: -ms-transform 0.3s 0.3s,
-    -webkit-transform 0.3s 0.3s,
-    transform 0.3s 0.3s,
-    visibility 0s 0s;
-  transition: -ms-transform 0.3s 0.3s,
-    -webkit-transform 0.3s 0.3s,
-    transform 0.3s 0.3s,
-    visibility 0s 0s;
+  -webkit-transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0s;
+  transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0s;
 }
 
 /* Info hotspot modal */
@@ -509,23 +483,19 @@ body.single-scene {
   height: 100%;
   overflow: hidden;
   z-index: 11000 !important;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   line-height: 1.2em;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity 0.2s ease-in-out 0.5s,
-    visibility 0s 0.7s;
-  transition: opacity 0.2s ease-in-out 0.5s,
-    visibility 0s 0.7s;
+  -webkit-transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
+  transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
 }
 
 .info-hotspot-modal.visible {
   opacity: 1;
   visibility: visible;
-  -webkit-transition: opacity 0.2s ease-in-out,
-    visibility 0s 0s;
-  transition: opacity 0.2s ease-in-out,
-    visibility 0s 0s;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0s 0s;
+  transition: opacity 0.2s ease-in-out, visibility 0s 0s;
 }
 
 .info-hotspot-modal .info-hotspot-header {
@@ -570,7 +540,7 @@ body.single-scene {
 }
 
 .info-hotspot-modal .info-hotspot-title-wrapper:before {
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
@@ -705,7 +675,6 @@ body.view-control-buttons .viewControlButton {
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
 
 /* given styles from figma */
 /* .nav-menu {
@@ -963,7 +932,7 @@ body.view-control-buttons .viewControlButton {
   align-items: center;
   white-space: nowrap;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .room-item:last-child,
@@ -995,9 +964,130 @@ span.text-span {
   line-height: 100%;
 }
 
+/* Contact block styles */
+.contact-card {
+  display: none;
+  position: fixed;
+  bottom: 120px;
+  left: 27px;
+  text-shadow: 0px 0px 6.17px #000000;
+  background: var(--panel-color);
+  border: 3px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
+  backdrop-filter: blur(6.73px);
+  padding: 36px 26px;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  z-index: 9999;
+}
+
+.agentContainer,
+.phoneContainer,
+.mail {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.agentContainer {
+  margin-bottom: 34px;
+}
+
+.agentContainer img {
+  margin-right: 8px;
+}
+
+.contact-info h2 {
+  font-size: 23.2px;
+  font-weight: 400;
+  text-align: center;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #fefefe;
+  margin-bottom: 34px;
+  letter-spacing: 0.4px;
+}
+
+.mail img {
+  width: 64px;
+  height: 64px;
+}
+
+.agentDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.agentDetails h5 {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.agentDetails p {
+  font-size: 21px;
+}
+
+.phoneNumbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.phoneContainer {
+  margin-bottom: 12px;
+}
+
+.phoneNumbers p,
+.mail {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.mail p {
+  letter-spacing: 0px;
+}
+
+.phoneContainer img,
+.mail img {
+  width: 35px;
+  height: 35px;
+  margin-right: 14px;
+  object-fit: cover;
+}
+
+.contact-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 25px;
+  left: 27px;
+  height: 78px;
+  width: 78px;
+  background: var(--panel-color);
+  border: 3px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
+  backdrop-filter: blur(10px);
+  padding: 36px 26px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.contact-icon-container img {
+  height: 36.5px;
+  width: 36.5px;
+  object-fit: cover;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
-
   #roomsList,
   #floorsList {
     position: fixed;
