@@ -246,26 +246,57 @@ document.addEventListener("DOMContentLoaded", function () {
     var floorsList = document.getElementById("floorsList");
     var roomsToggle = document.getElementById("roomsToggle");
     var floorsToggle = document.getElementById("floorsToggle");
-    var contactToggle = document.getElementById("contactToggle");
+    var contactToggleDesktop = document.getElementById("contactToggleDesktop");
+    var contactToggleMobile = document.getElementById("contactToggleMobile");
     var contactCard = document.querySelector(".contact-card");
+    var closeBtnWrapper = document.querySelector(".closeBtnWrapper");
+    const allPopups = document.querySelectorAll(
+      ".roomsList, .floorsList, .swiper"
+    );
+
     let isCardVisible = false;
 
-    contactToggle.addEventListener("click", function (e) {
-      // e.stopPropagation(); // Prevent background click from firing
+    function closeAllPopups() {
+      allPopups.forEach((popup) => {
+        popup.style.display = "none";
+      });
+      // Reset visibility flags if you have them
+      isCardVisible = false;
+      // If other popups have visibility flags, reset them here
+    }
+
+    function toggleContactCard(e) {
+      e.stopPropagation();
+      if (!isCardVisible) {
+        closeAllPopups(); // close other popups
+        hideAllLists(); // close others before opening
+      }
       isCardVisible = !isCardVisible;
       contactCard.style.display = isCardVisible ? "block" : "none";
-    });
+    }
 
-    // Close when clicking anywhere outside the contact-card
+    // Attach same event to both desktop and mobile buttons
+    contactToggleDesktop.addEventListener("click", toggleContactCard);
+    contactToggleMobile.addEventListener("click", toggleContactCard);
+
+    // Close when clicking outside
     document.addEventListener("click", function (e) {
       if (
         isCardVisible &&
         !contactCard.contains(e.target) &&
-        !contactToggle.contains(e.target)
+        !contactToggleDesktop.contains(e.target) &&
+        !contactToggleMobile.contains(e.target)
       ) {
+        // closeAllPopups();
+        hideAllLists();
         contactCard.style.display = "none";
         isCardVisible = false;
       }
+    });
+
+    closeBtnWrapper.addEventListener("click", function () {
+      contactCard.style.display = "none";
+      isCardVisible = false;
     });
 
     // Sort scenes into floors
