@@ -975,7 +975,7 @@ span.text-span {
   border: 3px solid rgba(255, 255, 255, 0.45);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border-radius: 9px;
-  backdrop-filter: blur(6.73px);
+  backdrop-filter: blur(2.5px);
   padding: 36px 26px;
   font-family: "Montserrat", sans-serif;
   color: #fff;
@@ -1086,6 +1086,42 @@ span.text-span {
   object-fit: cover;
 }
 
+.closeBtnWrapper {
+  display: none;
+  margin-top: -18px;
+  margin-bottom: 23px;
+  text-align: right;
+}
+
+.closeBtnWrapper button {
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  text-shadow: 0px 0px 6.17px #000000;
+  background: var(--panel-color);
+  padding: 8px 19px;
+  border: 2px;
+  border-radius: 4px;
+  backdrop-filter: blur(6.73px);
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+}
+
+.closeBtnWrapper button::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* covers the whole card */
+  border-radius: inherit;
+  padding: 2px; /* border thickness */
+  background: linear-gradient(to right, #F5F5F5 0%, #DCDCDC 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; /* so clicks pass through */
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   #roomsList,
@@ -1102,6 +1138,9 @@ span.text-span {
   .floor-item {
     padding: 15px 20px;
   }
+ 
+  
+  
 }
 
 .swiper {
@@ -1174,7 +1213,27 @@ span.text-span {
     padding: 30px !important;
   }
 
-  #fullscreenToggle {
+  #fullscreenToggle, #contactToggleDesktop {
+    display: none;
+  }
+
+  .contact-card {
+  position: fixed;
+  height: fit-content;
+  top: 50%;     /* center vertically */
+  left: 50%;    /* center horizontally */
+  transform: translate(-50%, -50%); /* adjust for own width & height */
+}
+
+
+  .closeBtnWrapper {
+  display: block;
+  }
+
+}
+
+@media (min-width: 768px) {
+  #contactToggleMobile {
     display: none;
   }
 }
