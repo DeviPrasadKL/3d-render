@@ -351,8 +351,8 @@ document.addEventListener("DOMContentLoaded", function () {
         var floorNumber = basementMatch
           ? "GF"
           : floorMatch
-          ? floorMatch[1]
-          : "1";
+            ? floorMatch[1]
+            : "1";
         div.setAttribute("data-floor", floorNumber);
 
         div.appendChild(span); // Add the span to the div
@@ -400,8 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
             var sceneFloor = basementMatch
               ? "GF"
               : floorMatch
-              ? floorMatch[1]
-              : "1";
+                ? floorMatch[1]
+                : "1";
             return (
               sceneFloor === floor &&
               (scene.data.name.includes("- E -") ||
@@ -444,8 +444,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initialFloor = initialBasementMatch
       ? "GF"
       : initialFloorMatch
-      ? initialFloorMatch[1]
-      : "1";
+        ? initialFloorMatch[1]
+        : "1";
     document
       .querySelectorAll('.room-item[data-floor="' + initialFloor + '"]')
       .forEach(function (item) {
@@ -513,17 +513,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the switchScene function to include active state updates
   function switchScene(scene, preserveView = false) {
     // stopAutorotate();
-    // let currentViewParams = null;
-    // if (preserveView) {
-    //   // Get current view parameters from the active view
-    //   currentViewParams = viewer.view().parameters();
-    // }
+    let currentViewParams = null;
+    if (preserveView) {
+      // Get current view parameters from the active view
+      currentViewParams = viewer.view().parameters();
+    }
     scene.scene.switchTo();
-    // if (preserveView && currentViewParams) {
-    //   scene.view.setParameters(currentViewParams);
-    // } else if (!preserveView) {
-    scene.view.setParameters(scene.data.initialViewParameters);
-    // }
+    if (preserveView && currentViewParams) {
+      scene.view.setParameters(currentViewParams);
+    } else if (!preserveView) {
+      scene.view.setParameters(scene.data.initialViewParameters);
+    }
     // startAutorotate();
     updateSceneName(scene);
     updateActiveStates(scene);
