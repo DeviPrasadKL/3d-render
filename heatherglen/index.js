@@ -351,8 +351,8 @@ document.addEventListener("DOMContentLoaded", function () {
         var floorNumber = basementMatch
           ? "GF"
           : floorMatch
-            ? floorMatch[1]
-            : "1";
+          ? floorMatch[1]
+          : "1";
         div.setAttribute("data-floor", floorNumber);
 
         div.appendChild(span); // Add the span to the div
@@ -400,8 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
             var sceneFloor = basementMatch
               ? "GF"
               : floorMatch
-                ? floorMatch[1]
-                : "1";
+              ? floorMatch[1]
+              : "1";
             return (
               sceneFloor === floor &&
               (scene.data.name.includes("- E -") ||
@@ -444,8 +444,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initialFloor = initialBasementMatch
       ? "GF"
       : initialFloorMatch
-        ? initialFloorMatch[1]
-        : "1";
+      ? initialFloorMatch[1]
+      : "1";
     document
       .querySelectorAll('.room-item[data-floor="' + initialFloor + '"]')
       .forEach(function (item) {
@@ -626,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var targetSceneName = targetSceneData.name.split("-")[0].trim();
 
       // If the target scene is on 1F and currently on GF, activate 1F
-      if (activeGF && targetSceneDataName.includes("Stairs - 1 - 1F")) {
+      if (activeGF && targetSceneDataName.includes("1F")) {
         document.querySelectorAll(".floor-item").forEach(function (item) {
           if (item.textContent.trim() === "1F") {
             item.classList.add("active");
@@ -647,16 +647,21 @@ document.addEventListener("DOMContentLoaded", function () {
             document
               .querySelectorAll('.room-item[data-floor="1"]')
               .forEach(function (roomItem) {
+                console.log("Room items:", roomItem);
                 roomItem.style.display = "flex";
               });
           } else {
             item.classList.remove("active");
           }
         });
-        // Existing logic for 1F to 2F
-      } else if (active1F && targetSceneDataName.includes("Stairs - 1 - B")) {
+        
+      } else if ( // Existing logic for 1F to GF
+        active1F &&
+        (targetSceneDataName.includes("Stairs - 1 - B") ||
+          targetSceneDataName.includes("Exterior"))
+      ) {
         document.querySelectorAll(".floor-item").forEach(function (item) {
-          if (item.textContent.trim() === "B") {
+          if (item.textContent.trim() === "GF") {
             item.classList.add("active");
             // Also update the swiper if it's visible
             var swiperContainer = document.querySelector(".swiper");
@@ -674,16 +679,17 @@ document.addEventListener("DOMContentLoaded", function () {
               .forEach(function (roomItem) {
                 roomItem.style.display = "none";
               });
+
             document
-              .querySelectorAll('.room-item[data-floor="0"]')
+              .querySelectorAll('.room-item[data-floor="GF"]')
               .forEach(function (roomItem) {
                 roomItem.style.display = "flex";
               });
           } else {
             item.classList.remove("active");
           }
-        });
-      } else if (active2F && targetSceneDataName.includes("Passage - 1 - 1F")) {
+        }); // Existing logic for 2F to 1F
+      } else if (active2F && targetSceneDataName.includes("Passage - 1 - 1F")) { 
         // Find and activate the 1F floor item
         document.querySelectorAll(".floor-item").forEach(function (item) {
           if (item.textContent.trim() === "1F") {
@@ -712,8 +718,9 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             item.classList.remove("active");
           }
-        });
+        }); // Existing logic for 1F to 2F
       } else if (active1F && targetSceneDataName.includes("Stairs - E - 2F")) {
+        // Switching from 1F to 2F
         // Find and activate the 3F floor item
         document.querySelectorAll(".floor-item").forEach(function (item) {
           if (item.textContent.trim() === "2F") {
@@ -741,10 +748,10 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             item.classList.remove("active");
           }
-        });
+        }); // Existing logic for 3F to 2F
       } else if (
         active3F &&
-        targetSceneDataName.includes("Hallway - ME - 2F")
+        targetSceneDataName.includes("Hallway - ME - 2F") 
       ) {
         // Find and activate the 2F floor item
         document.querySelectorAll(".floor-item").forEach(function (item) {
