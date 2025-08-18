@@ -246,10 +246,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var floorsList = document.getElementById("floorsList");
     var roomsToggle = document.getElementById("roomsToggle");
     var floorsToggle = document.getElementById("floorsToggle");
-    var contactToggleDesktop = document.getElementById("contactToggleDesktop");
     var contactToggleMobile = document.getElementById("contactToggleMobile");
     var contactCard = document.querySelector(".contact-card");
-    var closeBtnWrapper = document.querySelector(".closeBtnWrapper");
+    const contactToggleDesktop = document.getElementById("contactToggleDesktop");
+    const closeBtnWrapper = document.querySelector(".closeBtnWrapper");
     const allPopups = document.querySelectorAll(
       ".roomsList, .floorsList, .swiper"
     );
@@ -276,8 +276,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Attach same event to both desktop and mobile buttons
-    contactToggleDesktop.addEventListener("click", toggleContactCard);
-    contactToggleMobile.addEventListener("click", toggleContactCard);
+    contactToggleDesktop?.addEventListener("click", toggleContactCard);
+    contactToggleMobile?.addEventListener("click", toggleContactCard);
 
     // Close when clicking outside
     document.addEventListener("click", function (e) {
@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    closeBtnWrapper.addEventListener("click", function () {
+    closeBtnWrapper?.addEventListener("click", function () {
       contactCard.style.display = "none";
       isCardVisible = false;
     });
@@ -647,7 +647,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document
               .querySelectorAll('.room-item[data-floor="1"]')
               .forEach(function (roomItem) {
-                console.log("Room items:", roomItem);
                 roomItem.style.display = "flex";
               });
           } else {
