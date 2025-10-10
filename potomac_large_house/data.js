@@ -843,7 +843,7 @@ var APP_DATA = {
           "yaw": -1.5704166372952812,
           "pitch": 0.46693465272010215,
           "rotation": 0,
-          "target": "23-study---2---2f"
+          "target": "23-study---2---1f"
         }
       ],
       "infoHotspots": []
@@ -1075,7 +1075,7 @@ var APP_DATA = {
           "yaw": -1.488226226247635,
           "pitch": 0.739155135333899,
           "rotation": 0,
-          "target": "23-study---2---2f"
+          "target": "23-study---2---1f"
         }
       ],
       "infoHotspots": []
@@ -1157,8 +1157,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "23-study---2---2f",
-      "name": "Study - 2 - 2F",
+      "id": "23-study---2---1f",
+      "name": "Study - 2 - 1F",
       "levels": [
         {
           "tileSize": 256,
@@ -1239,7 +1239,7 @@ var APP_DATA = {
           "yaw": 0.6304940362128377,
           "pitch": 0.5343404185363791,
           "rotation": 0,
-          "target": "23-study---2---2f"
+          "target": "23-study---2---1f"
         },
         {
           "yaw": 2.520565702668331,
