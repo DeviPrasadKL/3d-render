@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove('active');
           }
         });
-      } else if (active2F && targetSceneDataName.includes("Hallway - E - 1F")) {
+      } else if (active2F && targetSceneDataName.includes("Great Room - ME - 1F")) {
         // Find and activate the 1F floor item
         document.querySelectorAll('.floor-item').forEach(function (item) {
           if (item.textContent.trim() === '1F') {
