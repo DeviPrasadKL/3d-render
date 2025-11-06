@@ -1740,8 +1740,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "36-her-wic---1---2f",
-      "name": "Her WIC - 1 - 2F",
+      "id": "36-his-wic---1---2f",
+      "name": "His WIC - 1 - 2F",
       "levels": [
         {
           "tileSize": 256,
@@ -1778,14 +1778,14 @@ var APP_DATA = {
           "yaw": 2.1479925042860692,
           "pitch": 0.7213084610157487,
           "rotation": 0,
-          "target": "37-her-wic---2---2f"
+          "target": "37-his-wic---2---2f"
         }
       ],
       "infoHotspots": []
     },
     {
-      "id": "37-her-wic---2---2f",
-      "name": "Her WIC - 2 - 2F",
+      "id": "37-his-wic---2---2f",
+      "name": "His WIC - 2 - 2F",
       "levels": [
         {
           "tileSize": 256,
@@ -1816,14 +1816,14 @@ var APP_DATA = {
           "yaw": -0.8480109531850033,
           "pitch": 0.7253222379800981,
           "rotation": 0,
-          "target": "36-her-wic---1---2f"
+          "target": "36-his-wic---1---2f"
         }
       ],
       "infoHotspots": []
     },
     {
-      "id": "38-his-wic---1---2f",
-      "name": "His WIC - 1 - 2F",
+      "id": "38-her-wic---1---2f",
+      "name": "Her WIC - 1 - 2F",
       "levels": [
         {
           "tileSize": 256,
@@ -1854,13 +1854,13 @@ var APP_DATA = {
           "yaw": 2.2054881445704693,
           "pitch": 0.6337064045073095,
           "rotation": 0,
-          "target": "40-his-wic---3---2f"
+          "target": "40-her-wic---3---2f"
         },
         {
           "yaw": 0.9840168232002,
           "pitch": 0.6471701581950366,
           "rotation": 0,
-          "target": "39-his-wic---2---2f"
+          "target": "39-her-wic---2---2f"
         },
         {
           "yaw": -1.466132808076198,
@@ -1878,8 +1878,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "39-his-wic---2---2f",
-      "name": "His WIC - 2 - 2F",
+      "id": "39-her-wic---2---2f",
+      "name": "Her WIC - 2 - 2F",
       "levels": [
         {
           "tileSize": 256,
@@ -1910,7 +1910,7 @@ var APP_DATA = {
           "yaw": -2.004120442125462,
           "pitch": 0.6469571668834231,
           "rotation": 0,
-          "target": "38-his-wic---1---2f"
+          "target": "38-her-wic---1---2f"
         },
         {
           "yaw": -1.8487320392324413,
@@ -1922,8 +1922,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "40-his-wic---3---2f",
-      "name": "His WIC - 3 - 2F",
+      "id": "40-her-wic---3---2f",
+      "name": "Her WIC - 3 - 2F",
       "levels": [
         {
           "tileSize": 256,
@@ -1954,7 +1954,7 @@ var APP_DATA = {
           "yaw": -0.9135372741086236,
           "pitch": 0.6141994791262153,
           "rotation": 0,
-          "target": "38-his-wic---1---2f"
+          "target": "38-her-wic---1---2f"
         },
         {
           "yaw": -1.099428709673898,
@@ -2130,7 +2130,7 @@ var APP_DATA = {
           "yaw": 1.5602446756844657,
           "pitch": 0.6951487604329785,
           "rotation": 0,
-          "target": "38-his-wic---1---2f"
+          "target": "38-her-wic---1---2f"
         },
         {
           "yaw": -1.5585545921903474,
@@ -2180,7 +2180,7 @@ var APP_DATA = {
           "yaw": 1.5695624254327472,
           "pitch": 0.3667262807893863,
           "rotation": 0,
-          "target": "38-his-wic---1---2f"
+          "target": "38-her-wic---1---2f"
         },
         {
           "yaw": -1.5724721481541621,
@@ -2348,7 +2348,7 @@ var APP_DATA = {
           "yaw": -2.5808499178518876,
           "pitch": 0.5276317351663522,
           "rotation": 0,
-          "target": "36-her-wic---1---2f"
+          "target": "36-his-wic---1---2f"
         }
       ],
       "infoHotspots": []
