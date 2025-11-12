@@ -2055,7 +2055,7 @@ var APP_DATA = {
     },
     {
       "id": "43-powder---m----2f",
-      "name": "Powder - M  - 2F",
+      "name": "Powder - M - 2F",
       "levels": [
         {
           "tileSize": 256,
