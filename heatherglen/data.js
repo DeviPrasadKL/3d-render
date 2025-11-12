@@ -1638,7 +1638,7 @@ var APP_DATA = {
     },
     {
       "id": "32-study---1---1f",
-      "name": "Study - 1 - 1F",
+      "name": "Study/Bedroom 2 - 1 - 1F",
       "levels": [
         {
           "tileSize": 256,
@@ -1688,7 +1688,7 @@ var APP_DATA = {
     },
     {
       "id": "33-study---m---1f",
-      "name": "Study - M - 1F",
+      "name": "Study/Bedroom 2 - M - 1F",
       "levels": [
         {
           "tileSize": 256,
